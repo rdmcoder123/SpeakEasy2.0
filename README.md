@@ -21,6 +21,3 @@ Overall, the purpose and functionality of the "Sonic" website align closely with
 1. Cognitive Services: Text-to-speech and speech-to-text services
 2. Web Services: Static web apps
 
-**Deployment:**
-1. GitHub: https://krishna-vineeth.github.io/Sonic/
-2. Azure: https://black-field-01efa7010.3.azurestaticapps.net
