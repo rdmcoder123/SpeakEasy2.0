@@ -1,70 +1,48 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/x-icon" href="/assets/img/favicon.ico">
     <title>Text to Speech</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    
     <style>
-        
         body {
             font-family: "Open Sans", sans-serif;
-      background-color:#FEF8F5; 
-        
+            background-color: #FEF8F5;
         }
 
         h1 {
             color: #4E4039;
             text-align: center;
+            margin-top: 20px;
+            font-size: 24px; /* Adjusted font size for mobile */
         }
 
         #container {
-            max-width: 500px;
+            max-width: 100%; /* Use full width on mobile */
             margin: 0 auto;
-            padding: 20px;
+            padding: 15px; /* Reduced padding for mobile */
             background-color: #fff;
             border-radius: 10px;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
         }
 
         textarea {
-        
-            width: 50%;
+            width: 100%;
             padding: 10px;
             font-size: 16px;
             border: 1px solid #ccc;
-            border-radius: 5\px;
+            border-radius: 5px;
             resize: vertical;
-            margin-left: 350px;
-        }
-        
-        .button-container {
-      text-align: center;
-    }
-
-        button {
-            padding: 10px 20px;
-            font-size: 16px;
-            background-color: #eb5d1e;
-            color: white;
-            border: none;
-            cursor: pointer;
-            margin-right: 10px;
-            border-radius: 4px;
-            transition: background-color 0.3s ease;
-            margin-top: 20px;
         }
 
-        button:hover {
-        background-color: #f77e4a;
-        }
-
-        audio {
-            display: none;
-        }
         .floating-image {
-            width: 50%;
+            width: 35%; /* Adjusted width for better display on mobile */
             position: fixed;
             bottom: 20px;
-            left: 51%;
+            left: 50%;
             transform: translateX(-50%);
             animation: floatAnimation 3s infinite;
         }
@@ -74,19 +52,48 @@
             50% { transform: translateX(-50%) translateY(-10px); }
             100% { transform: translateX(-50%) translateY(0); }
         }
+
+        .btn-custom {
+            position: relative;
+            overflow: hidden;
+            width: 100%; /* Button takes full width on mobile */
+        }
+        
+        .btn-custom::after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 300%;
+            height: 300%;
+            background: rgba(255, 255, 255, 0.2);
+            transition: transform 0.2s ease;
+            border-radius: 50%;
+            transform: translate(-50%, -50%) scale(0);
+        }
+
+        .btn-custom:active::after {
+            transform: translate(-50%, -50%) scale(1);
+        }
     </style>
 </head>
 <body>
-    <h1>Text to Speech</h1>
-    <textarea id="text" rows="4" cols="50" placeholder="Enter your text"></textarea>
-    <br>
-    <div class="button-container">
-        <button onclick="convertTextToSpeech()">Convert to Speech</button>
+    <div class="container mt-4">
+        <h1>Text to Speech</h1>
+        <div id="container" class="mt-4 p-4">
+            <textarea id="text" rows="4" placeholder="Enter your text"></textarea>
+            <div class="text-center mt-4">
+                <button class="btn btn-danger btn-custom" onclick="convertTextToSpeech()">Convert to Speech</button>
+            </div>
+        </div>
     </div>
     
-    <br>
     <audio id="audio"></audio>
-    <img src="assets\img\text.png" alt="Floating Image" class="floating-image">
+    <img src="assets/img/text.png" alt="Floating Image" class="floating-image">
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script>
         function convertTextToSpeech() {
             var text = document.getElementById('text').value;
