@@ -15,7 +15,7 @@
 
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,600,600i,700,700i" rel="stylesheet">
 
-
+  <link rel="manifest" href="assets/manifest.json">
   <link href="assets/vendor/aos/aos.css" rel="stylesheet">
   <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
@@ -142,7 +142,7 @@
               <img src="assets/img/mic1.svg" alt="">
               <h4 class="title"><a href="">text to sign</a></h4>
               <p class="description">Explore our text to sign service</p>
-              <a href="https://sign.mt/">Click Here </a>
+              <a href="https://sign.mt/" target="_blank">Click Here </a>
             </div>
           </div>
         </div>
@@ -226,7 +226,18 @@
   <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
   <script src="assets/vendor/php-email-form/validate.js"></script>
 
-
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('/sw.js')
+        .then(function(registration) {
+          console.log('Service Worker registered with scope:', registration.scope);
+        })
+        .catch(function(error) {
+          console.log('Service Worker registration failed:', error);
+        });
+    }
+  </script>
+  
   <script src="assets/js/main.js"></script>
 
 </body>
